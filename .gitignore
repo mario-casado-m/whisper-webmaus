@@ -1,0 +1,10 @@
+*.TextGrid
+*.txt
+*.wav
+*.WAV
+
+*.R*
+
+*.xml
+*.html
+*.xpr
