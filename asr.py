@@ -12,6 +12,7 @@ class ASR(object):
         print('Modelo cargado.')
 
     def transcribe(self, filepath, lang):
+        '''Función para realizar la transcripcion de audio'''
         from os import path
 
         '''

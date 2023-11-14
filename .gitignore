@@ -1,5 +1,7 @@
 *.TextGrid
 *.txt
+!requirements.txt
+!LICENSE.txt
 *.wav
 *.WAV
 
