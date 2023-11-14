@@ -3,13 +3,13 @@ from os import path
 BASE = "https://clarin.phonetik.uni-muenchen.de/BASWebServices/services/"
 
 class WebMAUS(object):
-    def __init__(self, audiopath, text, lang):
+
+    def set_vars(self, audiopath, text, lang):
         self.audio = audiopath
         self.filename = path.basename(self.audio).rstrip(".wav")
         self.folder = path.dirname(self.audio)
         self.text = text
         self.lang = lang
-        self.run_pipeline()
 
     def create_basic_dict(self):
         '''funcion que crea un diccionario con los tres elementos basicos de cualquier peticion a WebMAUS: el audio, la transcripcion y el lenguaje'''
@@ -57,24 +57,27 @@ class WebMAUS(object):
         else:
             raise Exception(tree.find('output').text)
 
-    def run_maus_basic(self):
+    def run_maus_basic(self, audiopath, text, lang):
         '''peticion de un servicio basico a WebMAUS: una transcripcion de fonemas y palabras'''
         service_name = "runMAUSBasic"
         url = BASE + "/" + service_name
+
+        self.set_vars(audiopath, text, lang)
+
         files = self.create_basic_dict()
 
         self.send_maus(url, files)
 
-
-    def run_pipeline(self):
+    def run_pipeline(self, audiopath, text, lang):
         '''peticion compleja a WebMAUS: fonemas, silabas, palabras y ortografico'''
         service_name = "runPipeline"
         url = BASE + "/" + service_name
+
+        self.set_vars(audiopath, text, lang)
+
         files = self.create_basic_dict()
         files.update(
             {
-                'ASIGNAL': (None, "brownNoise"),
-                'AWORD': (None, "ANONYMIZED"),
                 'PIPE': (None, "G2P_MAUS_PHO2SYL")
             }
         )

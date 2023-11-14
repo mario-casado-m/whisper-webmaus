@@ -22,8 +22,6 @@ class ASR(object):
         '''
         LANGUAGE = lang
 
-        print(f'Generando transcripcion...')
-
         '''
         generamos la transcripción con Whisper pasandole el nombre de archivo que creamos antes
         con el argumento language forzamos la lengua de la transcripción
