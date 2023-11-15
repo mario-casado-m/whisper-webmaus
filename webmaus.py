@@ -6,7 +6,8 @@ class WebMAUS(object):
 
     def set_vars(self, audiopath, text, lang):
         self.audio = audiopath
-        self.filename = path.basename(self.audio).rstrip(".wav")
+        ext = '.' + path.basename(self.audio).rsplit('.')[-1]
+        self.filename = path.basename(self.audio).rstrip(ext)
         self.folder = path.dirname(self.audio)
         self.text = text
         self.lang = lang
