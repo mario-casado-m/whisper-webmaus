@@ -35,12 +35,12 @@ maus = WebMAUS()
 
 A continuación, podemos usar una de las dos funciones disponibles (`run_maus_basic` y `run_pipeline`). `run_maus_basic` traerá como resultado un TextGrid con un tier de palabras y otro de segmentos. `run_pipeline` está configurado para el *pipeline* `G2P_MAUS_PHO2SYL`, que añade silabificación.
 
-Solo debemos indicar la ruta al archivo, el texto la transcripción y la lengua en la debe operar el servicio de entre [aquellas que acepta](https://clarin.phonetik.uni-muenchen.de/BASWebServices/interface).
+Solo debemos indicar la ruta al archivo, el texto la transcripción y la lengua en la que debe operar el servicio de entre [aquellas que acepta](https://clarin.phonetik.uni-muenchen.de/BASWebServices/interface).
 
 ``` python
 from webmaus import WebMAUS
 
-maus.run_maus_basic((audiopath='C:\ruta\a\mi\audio.wav', text=transcripcion, lang='spa-ES')
+maus.run_maus_basic(audiopath='C:\ruta\a\mi\audio.wav', text=transcripcion, lang='spa-ES')
 ```
 
 Con esa sentencia, el módulo `webmaus.py` se encargará de solicitar la creación del TextGrid al servicio online y crear el archivo correspondiente en el mismo directorio en el que esté el audio.
